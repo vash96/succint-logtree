@@ -45,13 +45,14 @@ public:
             const uint32_t k = blk - 32 * pblk - 1;
             val = v_[blk] > 0;
             v_[pblk] = v_[pblk] | (val << (31 - k));
+            blk = pblk;
         }
     }
 };
 
 int main()
 {
-    int nbits = 33;
+    int nbits = 33*32;
     s_log32tree tree(nbits);
 
     cout << "I want to store " << nbits << " bits\n";
